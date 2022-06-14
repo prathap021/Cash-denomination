@@ -1,6 +1,12 @@
 # denominator
+indian rupess cash denominator 
+## sources
+1.github
+2.flutter cookbook
+## mostly using widget 
+1.Textfield
+2.setstate 
 
-A new Flutter project.
 
 ## Getting Started
 
