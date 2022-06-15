@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:number_to_words_english/number_to_words_english.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,6 +67,9 @@ class _DenoState extends State<Deno> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: <Widget>[
+            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+          ],
           backgroundColor: Colors.orange,
           title: const Text(
             'Denominator',
@@ -82,10 +86,27 @@ class _DenoState extends State<Deno> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                        child: Text(
-                          '₹' + total.toString(),
-                          style: const TextStyle(
-                              color: Colors.indigo, fontSize: 30),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30),
+                                child: Text(
+                                  '₹' + total.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.indigo, fontSize: 30),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30),
+                                child: Text(
+                                  '${NumberToWordsEnglish.convert(total)} ',
+                                  style: const TextStyle(
+                                      fontSize: 20, color: Colors.indigo),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         height: 200,
                         width: double.infinity,
