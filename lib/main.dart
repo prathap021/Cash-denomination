@@ -122,6 +122,7 @@ class _DenoState extends State<Deno> {
                                   width: 100,
                                   child: TextField(
                                       controller: n,
+                                      keyboardType: TextInputType.number,
                                       inputFormatters: <TextInputFormatter>[
                                         FilteringTextInputFormatter.allow(
                                             RegExp(r'[0-9]'))
@@ -150,6 +151,7 @@ class _DenoState extends State<Deno> {
                               child: SizedBox(
                                   width: 100,
                                   child: TextField(
+                                      keyboardType: TextInputType.number,
                                       inputFormatters: <TextInputFormatter>[
                                         FilteringTextInputFormatter.allow(
                                             RegExp(r'[0-9]'))
@@ -178,6 +180,7 @@ class _DenoState extends State<Deno> {
                               child: SizedBox(
                                   width: 100,
                                   child: TextField(
+                                      keyboardType: TextInputType.number,
                                       inputFormatters: <TextInputFormatter>[
                                         FilteringTextInputFormatter.allow(
                                             RegExp(r'[0-9]'))
@@ -223,6 +226,7 @@ class _DenoState extends State<Deno> {
                               child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -250,6 +254,7 @@ class _DenoState extends State<Deno> {
                             child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -277,6 +282,7 @@ class _DenoState extends State<Deno> {
                             child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -320,6 +326,7 @@ class _DenoState extends State<Deno> {
                               child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -347,6 +354,7 @@ class _DenoState extends State<Deno> {
                             child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -374,6 +382,7 @@ class _DenoState extends State<Deno> {
                             child: SizedBox(
                                 width: 100,
                                 child: TextField(
+                                    keyboardType: TextInputType.number,
                                     inputFormatters: <TextInputFormatter>[
                                       FilteringTextInputFormatter.allow(
                                           RegExp(r'[0-9]'))
@@ -413,6 +422,7 @@ class _DenoState extends State<Deno> {
                           child: SizedBox(
                             width: 100,
                             child: TextField(
+                                keyboardType: TextInputType.number,
                                 inputFormatters: <TextInputFormatter>[
                                   FilteringTextInputFormatter.allow(
                                       RegExp(r'[0-9]'))
