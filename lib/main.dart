@@ -80,122 +80,136 @@ class _DenoState extends State<Deno> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 15, color: Colors.indigo),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
-                    height: 200,
-                    width: double.infinity,
-                    child: Center(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
                         child: Text(
-                      '₹' + total.toString(),
-                      style: const TextStyle(fontSize: 30),
-                    )),
-                  ),
-                ),
+                          '₹' + total.toString(),
+                          style: const TextStyle(
+                              color: Colors.indigo, fontSize: 30),
+                        ),
+                        height: 200,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.orange,
+                                blurRadius: 3,
+                                spreadRadius: 5,
+                                offset: Offset(0, 0)),
+                            BoxShadow(
+                                color: Colors.green,
+                                blurRadius: 5,
+                                spreadRadius: 3,
+                                offset: Offset(5, 5)),
+                          ],
+                          color: Colors.grey[300],
+                        ))),
                 Wrap(
                     spacing: 5.0,
                     runSpacing: 5.0,
                     direction: Axis.vertical,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                  width: 100,
+                                  child: TextField(
+                                      controller: n,
+                                      inputFormatters: <TextInputFormatter>[
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp(r'[0-9]'))
+                                      ],
+                                      onChanged: (one) {
+                                        setState(() {
+                                          twothousand = one;
+                                          if (twothousand == '') {
+                                            a = 0;
+                                          } else {
+                                            a = int.parse(twothousand);
+                                          }
+                                          twotres = a * 2000;
+
+                                          sum();
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                          labelText: "₹2000",
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)))),
+                                )),
+                            Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: SizedBox(
-                                width: 100,
-                                child: TextField(
-                                    controller: n,
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.allow(
-                                          RegExp(r'[0-9]'))
-                                    ],
-                                    onChanged: (one) {
-                                      setState(() {
-                                        twothousand = one;
-                                        if (twothousand == '') {
-                                          a = 0;
-                                        } else {
-                                          a = int.parse(twothousand);
-                                        }
-                                        twotres = a * 2000;
+                                  width: 100,
+                                  child: TextField(
+                                      inputFormatters: <TextInputFormatter>[
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp(r'[0-9]'))
+                                      ],
+                                      onChanged: (two) {
+                                        setState(() {
+                                          fivehundred = two;
+                                          if (fivehundred == '') {
+                                            b = 0;
+                                          } else {
+                                            b = int.parse(fivehundred);
+                                          }
+                                          fivehres = b * 500;
 
-                                        sum();
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        labelText: "₹2000",
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)))),
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                                width: 100,
-                                child: TextField(
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.allow(
-                                          RegExp(r'[0-9]'))
-                                    ],
-                                    onChanged: (two) {
-                                      setState(() {
-                                        fivehundred = two;
-                                        if (fivehundred == '') {
-                                          b = 0;
-                                        } else {
-                                          b = int.parse(fivehundred);
-                                        }
-                                        fivehres = b * 500;
+                                          sum();
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                          labelText: "₹500",
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20))))),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                  width: 100,
+                                  child: TextField(
+                                      inputFormatters: <TextInputFormatter>[
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp(r'[0-9]'))
+                                      ],
+                                      onChanged: (three) {
+                                        setState(() {
+                                          twohundred = three;
+                                          if (twohundred == '') {
+                                            c = 0;
+                                          } else {
+                                            c = int.parse(twohundred);
+                                          }
+                                          twohres = c * 200;
 
-                                        sum();
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        labelText: "₹500",
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20))))),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                                width: 100,
-                                child: TextField(
-                                    inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.allow(
-                                          RegExp(r'[0-9]'))
-                                    ],
-                                    onChanged: (three) {
-                                      setState(() {
-                                        twohundred = three;
-                                        if (twohundred == '') {
-                                          c = 0;
-                                        } else {
-                                          c = int.parse(twohundred);
-                                        }
-                                        twohres = c * 200;
-
-                                        sum();
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        labelText: "₹200",
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20))))),
-                          )
-                        ],
+                                          sum();
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                          labelText: "₹200",
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20))))),
+                            )
+                          ],
+                        ),
                       ),
                     ]),
-                const Divider(
+                /*const Divider(
                   indent: 30,
                   endIndent: 30,
                   color: Colors.red,
-                ),
+                ),*/
                 Wrap(
                     spacing: 5.0,
                     runSpacing: 5.0,
@@ -288,11 +302,11 @@ class _DenoState extends State<Deno> {
                         ],
                       ),
                     ]),
-                const Divider(
+                /* const Divider(
                   indent: 30,
                   endIndent: 30,
                   color: Colors.red,
-                ),
+                ),*/
                 Wrap(
                     spacing: 5.0,
                     runSpacing: 10.0,
@@ -385,11 +399,11 @@ class _DenoState extends State<Deno> {
                         ],
                       ),
                     ]),
-                const Divider(
+                /*  const Divider(
                   indent: 30,
                   endIndent: 30,
                   color: Colors.red,
-                ),
+                ),*/
                 Wrap(children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
