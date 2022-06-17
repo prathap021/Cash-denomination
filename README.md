@@ -6,6 +6,7 @@ indian rupess cash denominator
 ## mostly using widget 
 1.Textfield
 2.setstate 
+## code writed in flutter 2.10.3
 
 
 ## Getting Started
