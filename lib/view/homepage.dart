@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -115,591 +115,680 @@ class Home extends StatelessWidget {
               Visibility(
                 visible: !settingcontroller.twothousandvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFFFF00FF),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 80,
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "₹2000",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFFF00FF),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              height: 45,
+                              width: 85,
+                              child: Center(
+                                  child: Text(
+                                "₹2000",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              )),
                             ),
                           ),
-                        )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "X",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700),
-                            controller:
-                                indiacontroller.twothousandcontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "X",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 45,
+                            width: 85,
+                            child: TextField(
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                              controller:
+                                  indiacontroller.twothousandcontroller.value,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(6),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'[0-9]'))
+                              ],
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "=",
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Text(
+                            "₹" + indiacontroller.twothousand.value.toString(),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "=",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child:
-                            Text(indiacontroller.twothousand.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.fivehundredvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFF918E85),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹500",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller:
-                                indiacontroller.fivehundredcontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xFF918E85),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              height: 45,
+                              width: 85,
+                              child: Center(
+                                  child: Text(
+                                "₹500",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              )),
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "X",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 85,
+                            child: TextField(
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                              controller:
+                                  indiacontroller.fivehundredcontroller.value,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(6),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'[0-9]'))
+                              ],
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "=",
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Text(
+                            "₹" + indiacontroller.fivehundred.value.toString(),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child:
-                            Text(indiacontroller.fivehundred.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.twohundredvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.orangeAccent,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹200",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller:
-                                indiacontroller.twohundredcontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.orangeAccent,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹200",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller:
+                                    indiacontroller.twohundredcontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(
+                                indiacontroller.twohundred.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child:
-                            Text(indiacontroller.twohundred.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.hundredvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.indigoAccent,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹100",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.hundredcontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.indigoAccent,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹100",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller:
+                                    indiacontroller.hundredcontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child:
+                                Text(indiacontroller.hundred.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.hundred.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.fiftyvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 21, 188, 183),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹50",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.fiftycontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 21, 188, 183),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹50",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller:
+                                    indiacontroller.fiftycontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(indiacontroller.fifty.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.fifty.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.twentyvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFF9ACD32),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹20",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.twentycontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFF9ACD32),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹20",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller:
+                                    indiacontroller.twentycontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child:
+                                Text(indiacontroller.twenty.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.twenty.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.tenvisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFF7B3F00),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹10",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.tencontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFF7B3F00),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹10",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller: indiacontroller.tencontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(indiacontroller.ten.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.ten.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.fivevisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xFFD4AF37),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹5",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.fivecontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFFD4AF37),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹5",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller:
+                                    indiacontroller.fivecontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(indiacontroller.five.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.five.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.twovisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey[400],
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹2",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.twocontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey[400],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹2",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller: indiacontroller.twocontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(indiacontroller.two.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.two.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: !settingcontroller.onevisible.value,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blueGrey,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        height: 40,
-                        width: 70,
-                        child: Center(
-                            child: Text(
-                          "₹1",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
-                      ),
-                      Text(
-                        "X",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
-                          height: 40,
-                          width: 80,
-                          child: TextField(
-                            controller: indiacontroller.onecontroller.value,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.allow(
-                                  RegExp(r'[0-9]'))
-                            ],
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.blueGrey,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 45,
+                            width: 85,
+                            child: Center(
+                                child: Text(
+                              "₹1",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )),
                           ),
-                        ),
+                          Text(
+                            "X",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: SizedBox(
+                              height: 40,
+                              width: 80,
+                              child: TextField(
+                                controller: indiacontroller.onecontroller.value,
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[0-9]'))
+                                ],
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "=",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            child: Text(indiacontroller.one.value.toString()),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "=",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 10),
-                        child: Text(indiacontroller.one.value.toString()),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               )
