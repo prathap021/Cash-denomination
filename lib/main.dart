@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:getcash/screens/home_screens/binding/homepage_binding.dart';
-import 'package:getcash/screens/setting_screen/view/setting_view.dart';
+import 'package:getcash/routes/app_pages.dart';
+import 'package:getcash/routes/app_routes.dart';
 
-import 'screens/setting_screen/binding/setting_binding.dart';
-import 'screens/home_screens/view/homepage.dart';
+
+
+import 'themes/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,17 +21,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(initialRoute: '/home', getPages: [
-      GetPage(
-        name: '/home',
-        page: () => Home(),
-        binding: HomeBinding(),
-      ),
-      GetPage(
-        name: '/setting',
-        page: () => Settingview(),
-        binding: SettingBinding(),
-      ),
-    ]);
+    return GetMaterialApp(
+      initialRoute: AppRoutes.splash,
+      getPages: AppPages.Pages,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      // themeMode: ThemeMode.system,
+    );
+    //getPages: [
+    //   GetPage(
+    //     name: '/splash',
+    //     page: () => Splash(),
+    //   ),
+    //   GetPage(
+    //     name: '/home',
+    //     page: () => Home(),
+    //     binding: HomeBinding(),
+    //   ),
+    //   GetPage(
+    //     name: '/setting',
+    //     page: () => Settingview(),
+    //     binding: SettingBinding(),
+    //   ),
+    //  ]);
   }
 }

@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controller/home_controller.dart';
-import '../../setting_screen/controller/setting_controller.dart';
-import '../../setting_screen/view/setting_view.dart';
+import '../../setting/controller/setting_controller.dart';
+import '../../setting/view/setting_view.dart';
 import 'package:number_to_words/number_to_words.dart';
 
 class Home extends StatelessWidget {

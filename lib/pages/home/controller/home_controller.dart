@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 class IndiaController extends GetxController {
   //geting input values from user
@@ -97,6 +100,8 @@ class IndiaController extends GetxController {
 
   @override
   void onInit() {
+ 
+   
     super.onInit();
 
     twothousandcontroller.value.addListener(() {
