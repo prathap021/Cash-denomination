@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:getcash/controller/binding/homepage_binding.dart';
-import 'package:getcash/views/setting_view.dart';
+import 'package:getcash/screens/home_screens/binding/homepage_binding.dart';
+import 'package:getcash/screens/setting_view.dart';
 
-import 'controller/binding/setting_binding.dart';
-import 'views/homepage.dart';
+import 'screens/setting_screen/binding/setting_binding.dart';
+import 'screens/home_screens/view/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
