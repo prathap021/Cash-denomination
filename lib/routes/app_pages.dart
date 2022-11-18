@@ -7,7 +7,7 @@ import '../pages/home/binding/homepage_binding.dart';
 import '../pages/home/view/homepage.dart';
 import '../pages/setting/binding/setting_binding.dart';
 import '../pages/setting/view/setting_view.dart';
-import '../pages/splash_screen/splash_screen.dart';
+import '../pages/splash/splash_screen.dart';
 
 class AppPages {
   static var Pages = [
