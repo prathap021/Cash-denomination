@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../controller/controller.dart';
-import 'setting_view/controller/setting_controller.dart';
-import 'setting_view/view/setting_view.dart';
+import '../controller/home_controller.dart';
+import '../controller/setting_controller.dart';
+import 'setting_view.dart';
 import 'package:number_to_words/number_to_words.dart';
 
 class Home extends StatelessWidget {
@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 130,
+                  height: 120,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.cyan,
@@ -76,16 +76,14 @@ class Home extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Expanded(
-                            child: Text(
-                              '₹\t' +
-                                  indiacontroller.total.value.toString() +
-                                  "-/",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
+                          child: Text(
+                            '₹\t' +
+                                indiacontroller.total.value.toString() +
+                                "-/",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
                           ),
                         ),
                         Padding(
@@ -108,14 +106,12 @@ class Home extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 20, right: 5),
-                                child: Expanded(
-                                  child: Text(
-                                    "Coins:\t" +
-                                        indiacontroller.coins.value.toString(),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
+                                child: Text(
+                                  "Coins:\t" +
+                                      indiacontroller.coins.value.toString(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
                                 ),
                               )
                             ],
@@ -123,14 +119,11 @@ class Home extends StatelessWidget {
                         ),
                         Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Expanded(
-                              child: Text(
-                                NumberToWord()
-                                    .convert(
-                                        'en-in', indiacontroller.total.value)
-                                    .toUpperCase(),
-                                style: TextStyle(fontWeight: FontWeight.w700),
-                              ),
+                            child: Text(
+                              NumberToWord()
+                                  .convert('en-in', indiacontroller.total.value)
+                                  .toUpperCase(),
+                              style: TextStyle(fontWeight: FontWeight.w700),
                             ))
                       ],
                     ),

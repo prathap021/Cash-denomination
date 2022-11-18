@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:getcash/controller/binding.dart';
-import 'package:getcash/view/homepage.dart';
-import 'package:getcash/view/setting_view/binding/setting_binding.dart';
-import 'package:getcash/view/setting_view/view/setting_view.dart';
+import 'package:getcash/controller/binding/homepage_binding.dart';
+import 'package:getcash/views/setting_view.dart';
+
+import 'controller/binding/setting_binding.dart';
+import 'views/homepage.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   runApp(MyApp());
 }
@@ -29,7 +31,6 @@ class MyApp extends StatelessWidget {
         page: () => Settingview(),
         binding: SettingBinding(),
       ),
-      
     ]);
   }
 }

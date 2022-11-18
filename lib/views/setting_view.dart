@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:getcash/view/setting_view/controller/setting_controller.dart';
+import 'package:getcash/controller/setting_controller.dart';
 
 class Settingview extends StatefulWidget {
   const Settingview({super.key});

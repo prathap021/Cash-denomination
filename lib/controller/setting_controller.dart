@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 
 import 'package:get_storage/get_storage.dart';
@@ -85,7 +83,7 @@ class SettingController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    log('values read');
+
     readvisiblevalues();
   }
 }
