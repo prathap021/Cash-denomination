@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:getcash/pages/history/view/history_view.dart';
 import 'package:getcash/routes/app_routes.dart';
 
+import '../pages/history/binding/history_binding.dart';
 import '../pages/home/binding/homepage_binding.dart';
 import '../pages/home/view/homepage.dart';
 import '../pages/setting/binding/setting_binding.dart';
@@ -24,6 +26,11 @@ class AppPages {
       name: AppRoutes.setting,
       page: () => Settingview(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.history,
+      page: () => History(),
+      binding: HistoryBinding(),
     ),
   ];
 }

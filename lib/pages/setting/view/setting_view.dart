@@ -18,7 +18,9 @@ class _SettingviewState extends State<Settingview> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Setting"),
+      ),
       body: SingleChildScrollView(
         child: Obx(
           () => Column(

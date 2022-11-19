@@ -1,10 +1,12 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
+class HomeController extends GetxController {
+  //date and time value storing variables
+  final RxString date = ''.obs;
+  final RxString time = ''.obs;
 
-class IndiaController extends GetxController {
   //geting input values from user
   final twothousandcontroller = TextEditingController().obs;
   final fivehundredcontroller = TextEditingController().obs;
@@ -55,6 +57,12 @@ class IndiaController extends GetxController {
       five = 0.obs,
       two = 0.obs,
       one = 0.obs;
+  //date time function
+  datetimefunction() {
+    date.value = DateFormat("hh:mm:ss a").format(DateTime.now());
+    time.value = DateFormat("dd-MM-yyyy").format(DateTime.now());
+  }
+
   //no of notes sum function
   notessum() {
     noofnotes.value = aa.value +
@@ -100,8 +108,6 @@ class IndiaController extends GetxController {
 
   @override
   void onInit() {
- 
-   
     super.onInit();
 
     twothousandcontroller.value.addListener(() {

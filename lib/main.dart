@@ -5,10 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getcash/routes/app_pages.dart';
 import 'package:getcash/routes/app_routes.dart';
-
-
-
-import 'themes/app_theme.dart';
+import 'package:getcash/themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,29 +18,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // theme: Themes().lightTheme,
+    //   darkTheme: Themes().darkTheme,
+    //   themeMode: ThemeService().getThemeMode(),
+    //   home: Buddyshare());
     return GetMaterialApp(
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.home,
       getPages: AppPages.Pages,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      theme: Themes().lightTheme,
+      darkTheme: Themes().darkTheme,
+      themeMode: ThemeService().getThemeMode(),
+
       // themeMode: ThemeMode.system,
     );
-    //getPages: [
-    //   GetPage(
-    //     name: '/splash',
-    //     page: () => Splash(),
-    //   ),
-    //   GetPage(
-    //     name: '/home',
-    //     page: () => Home(),
-    //     binding: HomeBinding(),
-    //   ),
-    //   GetPage(
-    //     name: '/setting',
-    //     page: () => Settingview(),
-    //     binding: SettingBinding(),
-    //   ),
-    //  ]);
   }
 }

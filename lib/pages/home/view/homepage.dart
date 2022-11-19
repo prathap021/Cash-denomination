@@ -4,15 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../themes/themes.dart';
+import '../../history/view/history_view.dart';
 import '../controller/home_controller.dart';
 import '../../setting/controller/setting_controller.dart';
 import '../../setting/view/setting_view.dart';
 import 'package:number_to_words/number_to_words.dart';
 
-class Home extends StatelessWidget {
-  Home({super.key});
-  final indiacontroller = Get.put(IndiaController());
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final homecontroller = Get.put(HomeController());
+
   final settingcontroller = Get.put(SettingController());
+  bool colorone = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,38 +38,100 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "CASH COUNTER",
+                    "Denominator",
                     style: TextStyle(fontSize: 15, color: Colors.indigo),
                   ),
                   IconButton(
-                      color: Colors.indigo,
+                      color: Colors.teal,
+                      icon: Icon(Icons.save),
                       onPressed: () {
-                        indiacontroller.clearcontroller();
-                      },
-                      icon: Icon(Icons.clear_all)),
+                        homecontroller.datetimefunction();
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return StatefulBuilder(builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return AlertDialog(
+                                  title: Text("Payee Name"),
+                                  content: SizedBox(
+                                    height: 40,
+                                    child: TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10)))),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  actions: [
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Text(
+                                          "✗",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.redAccent),
+                                        )),
+                                    IconButton(
+                                        onPressed: () {
+                                          debugPrint(homecontroller.date.value
+                                              .toString());
+                                          debugPrint(homecontroller.time.value
+                                              .toString());
+                                        },
+                                        icon: Text(
+                                          "✔",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.lightGreen),
+                                        ))
+                                  ],
+                                );
+                              });
+                            });
+                      }),
                   IconButton(
-                      color: Colors.indigo,
-                      onPressed: () {},
+                      color: Colors.redAccent,
+                      onPressed: () {
+                        homecontroller.clearcontroller();
+                      },
+                      icon: Icon(Icons.cancel_rounded)),
+                  IconButton(
+                      color: Colors.grey,
+                      onPressed: () {
+                        Get.to(() => History());
+                      },
                       icon: Icon(Icons.history)),
                   PopupMenuButton(
                       child: Icon(Icons.more_vert),
                       itemBuilder: (context) => [
-                            PopupMenuItem(
-                                child: Column(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.abc_outlined),
-                                ),
-                                IconButton(
-                                    onPressed: () {}, icon: Icon(Icons.light)),
-                                IconButton(
-                                    onPressed: () {
-                                      Get.to(() => Settingview());
-                                    },
-                                    icon: Icon(Icons.settings))
-                              ],
-                            ))
+                            PopupMenuItem(child: StatefulBuilder(builder:
+                                (BuildContext context, StateSetter setState) {
+                              return Column(
+                                children: [
+                                  IconButton(
+                                      color: colorone
+                                          ? Colors.yellow
+                                          : Colors.black,
+                                      icon: Icon(Icons.light_outlined),
+                                      onPressed: () {
+                                        setState(() {
+                                          colorone = !colorone;
+                                        });
+                                        ThemeService().changeThemeMode();
+                                      }),
+                                  IconButton(
+                                      onPressed: () {
+                                        Get.to(() => Settingview());
+                                      },
+                                      icon: Icon(Icons.settings))
+                                ],
+                              );
+                            }))
                           ]),
                 ],
               ),
@@ -78,7 +151,7 @@ class Home extends StatelessWidget {
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             '₹\t' +
-                                indiacontroller.total.value.toString() +
+                                homecontroller.total.value.toString() +
                                 "-/",
                             style: TextStyle(
                                 fontSize: 20,
@@ -96,8 +169,7 @@ class Home extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text(
                                   "Notes:\t" +
-                                      indiacontroller.noofnotes.value
-                                          .toString(),
+                                      homecontroller.noofnotes.value.toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
@@ -108,7 +180,7 @@ class Home extends StatelessWidget {
                                     const EdgeInsets.only(left: 20, right: 5),
                                 child: Text(
                                   "Coins:\t" +
-                                      indiacontroller.coins.value.toString(),
+                                      homecontroller.coins.value.toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
@@ -121,7 +193,7 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
                               NumberToWord()
-                                  .convert('en-in', indiacontroller.total.value)
+                                  .convert('en-in', homecontroller.total.value)
                                   .toUpperCase(),
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ))
@@ -176,7 +248,7 @@ class Home extends StatelessWidget {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w700),
                               controller:
-                                  indiacontroller.twothousandcontroller.value,
+                                  homecontroller.twothousandcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -198,8 +270,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" +
-                                  indiacontroller.twothousand.value.toString(),
+                              "₹" + homecontroller.twothousand.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -254,7 +325,7 @@ class Home extends StatelessWidget {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w700),
                               controller:
-                                  indiacontroller.fivehundredcontroller.value,
+                                  homecontroller.fivehundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -276,8 +347,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" +
-                                  indiacontroller.fivehundred.value.toString(),
+                              "₹" + homecontroller.fivehundred.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -332,7 +402,7 @@ class Home extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                               controller:
-                                  indiacontroller.twohundredcontroller.value,
+                                  homecontroller.twohundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -354,7 +424,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.twohundred.value.toString(),
+                              "₹" + homecontroller.twohundred.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -409,7 +479,7 @@ class Home extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                               controller:
-                                  indiacontroller.hundredcontroller.value,
+                                  homecontroller.hundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -431,7 +501,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.hundred.value.toString(),
+                              "₹" + homecontroller.hundred.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -485,7 +555,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller: indiacontroller.fiftycontroller.value,
+                              controller: homecontroller.fiftycontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -507,7 +577,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.fifty.value.toString(),
+                              "₹" + homecontroller.fifty.value.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
@@ -561,8 +631,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller:
-                                  indiacontroller.twentycontroller.value,
+                              controller: homecontroller.twentycontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -584,7 +653,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.twenty.value.toString(),
+                              "₹" + homecontroller.twenty.value.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
@@ -638,7 +707,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller: indiacontroller.tencontroller.value,
+                              controller: homecontroller.tencontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -660,7 +729,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.ten.value.toString(),
+                              "₹" + homecontroller.ten.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -714,7 +783,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller: indiacontroller.fivecontroller.value,
+                              controller: homecontroller.fivecontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -736,7 +805,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.five.value.toString(),
+                              "₹" + homecontroller.five.value.toString(),
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -790,7 +859,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller: indiacontroller.twocontroller.value,
+                              controller: homecontroller.twocontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -812,7 +881,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.two.value.toString(),
+                              "₹" + homecontroller.two.value.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
@@ -866,7 +935,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
-                              controller: indiacontroller.onecontroller.value,
+                              controller: homecontroller.onecontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(10),
@@ -888,7 +957,7 @@ class Home extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + indiacontroller.one.value.toString(),
+                              "₹" + homecontroller.one.value.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
