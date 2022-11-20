@@ -56,6 +56,8 @@ class _HomeState extends State<Home> {
                                   content: SizedBox(
                                     height: 40,
                                     child: TextField(
+                                        controller: homecontroller
+                                            .payeecontroller.value,
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(
                                                 borderRadius:
@@ -67,7 +69,9 @@ class _HomeState extends State<Home> {
                                   ),
                                   actions: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Get.back();
+                                        },
                                         icon: Text(
                                           "✗",
                                           style: TextStyle(
@@ -77,10 +81,9 @@ class _HomeState extends State<Home> {
                                         )),
                                     IconButton(
                                         onPressed: () {
-                                          debugPrint(homecontroller.date.value
-                                              .toString());
-                                          debugPrint(homecontroller.time.value
-                                              .toString());
+                                          homecontroller.controllertomodel();
+                                          homecontroller.clearcontroller();
+                                          Get.back();
                                         },
                                         icon: Text(
                                           "✔",

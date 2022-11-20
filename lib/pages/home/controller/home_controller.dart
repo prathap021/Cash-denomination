@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getcash/database/dbhelper.dart';
+import 'package:getcash/models/denomination_model.dart';
 import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
+  //controller to model instance
+  static var modelvalues = Denomination().obs;
+  //create instance database
+  var dbprovider = DBProvider.db.obs;
   //date and time value storing variables
   final RxString date = ''.obs;
   final RxString time = ''.obs;
@@ -18,6 +24,7 @@ class HomeController extends GetxController {
   final fivecontroller = TextEditingController().obs;
   final twocontroller = TextEditingController().obs;
   final onecontroller = TextEditingController().obs;
+  final payeecontroller = TextEditingController().obs;
   //visible variables
 
   //input value geting variabls
@@ -57,6 +64,32 @@ class HomeController extends GetxController {
       five = 0.obs,
       two = 0.obs,
       one = 0.obs;
+  //controller to model update function
+  controllertomodel() async {
+    modelvalues.value.date = date.value;
+    modelvalues.value.time = time.value;
+    modelvalues.value.payeename = payeecontroller.value.text;
+    modelvalues.value.twothousand = twothousandcontroller.value.text;
+    modelvalues.value.fivehundred = fivehundredcontroller.value.text;
+    modelvalues.value.twohundred = twohundredcontroller.value.text;
+    modelvalues.value.hundred = hundredcontroller.value.text;
+    modelvalues.value.fifty = fiftycontroller.value.text;
+    modelvalues.value.twenty = twentycontroller.value.text;
+    modelvalues.value.ten = tencontroller.value.text;
+    modelvalues.value.five = fivecontroller.value.text;
+    modelvalues.value.two = twocontroller.value.text;
+    modelvalues.value.one = onecontroller.value.text;
+    modelvalues.value.totamt = total.value;
+    modelvalues.value.totnotes = noofnotes.value;
+    modelvalues.value.totcoins = coins.value;
+    var resultmodel =
+        await dbprovider.value.createDenomination(modelvalues.value);
+    debugPrint(resultmodel.toString());
+  }
+
+  //delete all data
+ 
+
   //date time function
   datetimefunction() {
     date.value = DateFormat("hh:mm:ss a").format(DateTime.now());
@@ -93,6 +126,7 @@ class HomeController extends GetxController {
 
   //all textfield clear function
   clearcontroller() {
+    payeecontroller.value.clear();
     twothousandcontroller.value.clear();
     fivehundredcontroller.value.clear();
     twohundredcontroller.value.clear();
@@ -235,6 +269,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    payeecontroller.value.dispose();
     twothousandcontroller.value.dispose();
     fivehundredcontroller.value.dispose();
     twohundredcontroller.value.dispose();
