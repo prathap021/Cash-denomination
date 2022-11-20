@@ -79,21 +79,20 @@ class HomeController extends GetxController {
     modelvalues.value.five = fivecontroller.value.text;
     modelvalues.value.two = twocontroller.value.text;
     modelvalues.value.one = onecontroller.value.text;
-    modelvalues.value.totamt = total.value;
-    modelvalues.value.totnotes = noofnotes.value;
-    modelvalues.value.totcoins = coins.value;
+    modelvalues.value.totamt = total.value.toString();
+    modelvalues.value.totnotes = noofnotes.toString();
+    modelvalues.value.totcoins = coins.value.toString();
     var resultmodel =
         await dbprovider.value.createDenomination(modelvalues.value);
     debugPrint(resultmodel.toString());
   }
 
   //delete all data
- 
 
   //date time function
   datetimefunction() {
-    date.value = DateFormat("hh:mm:ss a").format(DateTime.now());
-    time.value = DateFormat("dd-MM-yyyy").format(DateTime.now());
+    date.value = DateFormat("dd-MM-yyyy").format(DateTime.now());
+    time.value = DateFormat("hh:mm:ss a").format(DateTime.now());
   }
 
   //no of notes sum function

@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
                       },
                       icon: Icon(Icons.cancel_rounded)),
                   IconButton(
-                      color: Colors.grey,
+                      color: Colors.blueGrey,
                       onPressed: () {
                         Get.to(() => History());
                       },

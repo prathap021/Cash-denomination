@@ -13,9 +13,9 @@ class Denomination {
   String? five;
   String? two;
   String? one;
-  int? totamt; //holding total amount
-  int? totnotes; //holding total notes
-  int? totcoins; //holding total coins
+  String? totamt; //holding total amount
+  String? totnotes; //holding total notes
+  String? totcoins; //holding total coins
 
   Denomination(
       {this.date,

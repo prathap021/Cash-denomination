@@ -18,10 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // theme: Themes().lightTheme,
-    //   darkTheme: Themes().darkTheme,
-    //   themeMode: ThemeService().getThemeMode(),
-    //   home: Buddyshare());
+ 
     return GetMaterialApp(
       initialRoute: AppRoutes.home,
       getPages: AppPages.Pages,
