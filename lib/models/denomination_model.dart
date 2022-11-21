@@ -13,7 +13,7 @@ class Denomination {
   String? five;
   String? two;
   String? one;
-  String? totamt; //holding total amount
+  int? totamt; //holding total amount
   String? totnotes; //holding total notes
   String? totcoins; //holding total coins
 

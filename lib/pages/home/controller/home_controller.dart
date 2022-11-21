@@ -5,6 +5,7 @@ import 'package:getcash/models/denomination_model.dart';
 import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
+  RxInt wordsamt = 0.obs;
   //controller to model instance
   static var modelvalues = Denomination().obs;
   //create instance database
@@ -79,7 +80,7 @@ class HomeController extends GetxController {
     modelvalues.value.five = fivecontroller.value.text;
     modelvalues.value.two = twocontroller.value.text;
     modelvalues.value.one = onecontroller.value.text;
-    modelvalues.value.totamt = total.value.toString();
+    modelvalues.value.totamt = total.value;
     modelvalues.value.totnotes = noofnotes.toString();
     modelvalues.value.totcoins = coins.value.toString();
     var resultmodel =
@@ -92,7 +93,7 @@ class HomeController extends GetxController {
   //date time function
   datetimefunction() {
     date.value = DateFormat("dd-MM-yyyy").format(DateTime.now());
-    time.value = DateFormat("hh:mm:ss a").format(DateTime.now());
+    time.value = DateFormat("hh:mm: a").format(DateTime.now());
   }
 
   //no of notes sum function
@@ -121,6 +122,8 @@ class HomeController extends GetxController {
         five.value +
         two.value +
         one.value;
+    wordsamt.value = total.value;
+    //
   }
 
   //all textfield clear function

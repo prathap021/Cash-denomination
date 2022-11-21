@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getcash/pages/history/controller/history_controller.dart';
+import 'package:number_to_words/number_to_words.dart';
 
 class History extends StatelessWidget {
   History({super.key});
@@ -66,157 +67,297 @@ class History extends StatelessWidget {
             ),
             body: Obx(() => ListView.builder(
                 itemCount: historyontroller.data.length,
-                itemBuilder: ((context, index) => SizedBox(
-                      height: 200,
-                      width: double.infinity,
-                      child: Card(
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8, left: 8, right: 8),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(historyontroller.data[index].date
+                itemBuilder: ((context, index) {
+                  int rindex = historyontroller.data.length - 1 - index;
+                  return SizedBox(
+                    height: 280,
+                    width: double.infinity,
+                    child: Card(
+                      color: Colors.white30,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.white, width: 2),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 8, left: 8, right: 8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    historyontroller.data[rindex].date
                                             .toString() +
-                                        "\t" +
-                                        historyontroller.data[index].time
-                                            .toString()),
-                                    SizedBox(
-                                      width: 50,
+                                        "\t",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.pink),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    historyontroller.data[rindex].time
+                                            .toString() +
+                                        "\t",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      // historyontroller.result.value.deleteid(
+                                      //     historyontroller.data[rindex].id!);
+                                    },
+                                    icon: Text(
+                                      "✗",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25,
+                                          color: Colors.redAccent),
                                     ),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.edit)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.download)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.delete))
-                                  ],
-                                ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Text(
+                                      ">",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                          color: Colors.green),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(historyontroller.data[index].payeename
-                                        .toString()
-                                        .toUpperCase()),
+                                    Text(
+                                      historyontroller.data[rindex].payeename
+                                          .toString()
+                                          .toUpperCase(),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    ),
                                     SizedBox(
-                                      width: 100,
+                                      width: 10,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text('₹\t' +
-                                          historyontroller.data[index].totamt
-                                              .toString() +
-                                          "-/"),
+                                      child: Text(
+                                        '₹\t' +
+                                            historyontroller.data[rindex].totamt
+                                                .toString() +
+                                            "-/",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     )
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20, right: 15, top: 10),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 15, top: 10),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(""),
+                                    // Text(
+                                    //   NumberToWord()
+                                    //       .convert(
+                                    //           'en-in',
+                                    //           int.parse(historyontroller
+                                    //               .data[rindex].totamt
+                                    //               .toString()))
+                                    //       .toUpperCase(),
+                                    //   style: TextStyle(
+                                    //       fontSize: 16,
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
                                   ],
                                 ),
                               ),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20, top: 20),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("2000 x" +
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "2000 x" +
                                           "\t" +
                                           historyontroller
-                                              .data[index].twothousand
-                                              .toString()),
-                                      Text("500 x" +
+                                              .data[rindex].twothousand
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                        "500 x" +
+                                            "\t" +
+                                            historyontroller
+                                                .data[rindex].fivehundred
+                                                .toString(),
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold)),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "200 x" +
                                           "\t" +
                                           historyontroller
-                                              .data[index].fivehundred
-                                              .toString()),
-                                      Text("200 x" +
+                                              .data[rindex].twohundred
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                        "100 x" +
+                                            "\t" +
+                                            historyontroller
+                                                .data[rindex].hundred
+                                                .toString(),
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold)),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "50 x " +
                                           "\t" +
-                                          historyontroller
-                                              .data[index].twohundred
-                                              .toString()),
-                                      Text("100 x" +
-                                          "\t" +
-                                          historyontroller.data[index].hundred
-                                              .toString()),
-                                      Text("50 x " +
-                                          "\t" +
-                                          historyontroller.data[index].fifty
-                                              .toString()),
-                                    ],
-                                  ),
+                                          historyontroller.data[rindex].fifty
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
+                            ),
+                            Divider(),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
                                 padding: const EdgeInsets.only(
                                     left: 20, right: 20, top: 10),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("20 x" +
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "20 x" +
                                           "\t" +
-                                          historyontroller.data[index].twenty
-                                              .toString()),
-                                      Text("10 x" +
+                                          historyontroller.data[rindex].twenty
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "10 x" +
                                           "\t" +
-                                          historyontroller.data[index].ten
-                                              .toString()),
-                                      Text("5 x" +
+                                          historyontroller.data[rindex].ten
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "5 x" +
                                           "\t" +
-                                          historyontroller.data[index].five
-                                              .toString()),
-                                      Text("2 x" +
+                                          historyontroller.data[rindex].five
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "2 x" +
                                           "\t" +
-                                          historyontroller.data[index].two
-                                              .toString()),
-                                      Text("1 x" +
+                                          historyontroller.data[rindex].two
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      "1 x" +
                                           "\t" +
-                                          historyontroller.data[index].one
-                                              .toString()),
-                                    ],
-                                  ),
+                                          historyontroller.data[rindex].one
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                    ))))));
+                    ),
+                  );
+                })))));
   }
 }

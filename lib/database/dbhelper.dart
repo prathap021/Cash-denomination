@@ -50,7 +50,7 @@ class DBProvider {
     });
   }
 
-  //create employee
+  //create denomination
   createDenomination(Denomination denomination) async {
     //await deleteAllDenomination();
     final db = await database;
@@ -59,13 +59,21 @@ class DBProvider {
     return res;
   }
 
-  // Delete all employees
+  // Delete all denomination
   Future<int> deleteAllDenomination() async {
     final db = await database;
     final res = await db.rawDelete('DELETE FROM Denomination');
 
     return res;
   }
+  //delete perticular denominati on
+
+  // Future<int> deleteid(int id) async {
+  //   final db = await database;
+  //   final int result =
+  //       await db.delete('Denomination', where: 'id = ?', whereArgs: [id]);
+  //   return result;
+  // }
 
   //get denomination
   Future<List<Denomination>> getAllDenomination() async {

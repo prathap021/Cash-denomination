@@ -25,6 +25,29 @@ class _SettingviewState extends State<Settingview> {
         child: Obx(
           () => Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Notes Input Limit",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Slider(
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.orange,
+                  label: settingcontroller.slide.value.toInt().toString(),
+                  value: settingcontroller.slide.value,
+                  divisions: 10,
+                  onChanged: (value) {
+                    setState(() {
+                      settingcontroller.slide.value = value;
+                      debugPrint(
+                          settingcontroller.slide.value.toInt().toString());
+                      settingcontroller.slidewrite();
+                    });
+                  },
+                  min: 1,
+                  max: 10),
               Card(
                 child: SizedBox(
                   height: 50,

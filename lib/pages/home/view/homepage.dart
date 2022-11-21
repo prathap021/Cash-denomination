@@ -195,9 +195,8 @@ class _HomeState extends State<Home> {
                         Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              NumberToWord()
-                                  .convert('en-in', homecontroller.total.value)
-                                  .toUpperCase(),
+                              NumberToWord().convert(
+                                  'en-in', homecontroller.wordsamt.value),
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ))
                       ],
@@ -254,7 +253,8 @@ class _HomeState extends State<Home> {
                                   homecontroller.twothousandcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -331,7 +331,8 @@ class _HomeState extends State<Home> {
                                   homecontroller.fivehundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -408,7 +409,8 @@ class _HomeState extends State<Home> {
                                   homecontroller.twohundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -485,7 +487,8 @@ class _HomeState extends State<Home> {
                                   homecontroller.hundredcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -561,7 +564,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.fiftycontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -637,7 +641,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.twentycontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -713,7 +718,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.tencontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -789,7 +795,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.fivecontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -865,7 +872,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.twocontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],
@@ -941,7 +949,8 @@ class _HomeState extends State<Home> {
                               controller: homecontroller.onecontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(10),
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
                                 FilteringTextInputFormatter.allow(
                                     RegExp(r'[0-9]'))
                               ],

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class SettingController extends GetxController {
+  //slider value
+  final RxDouble slide = 3.0.obs;
   final RxBool twothousandvisible = false.obs;
   final RxBool fivehundredvisible = false.obs;
   final RxBool twohundredvisible = false.obs;
@@ -18,6 +20,7 @@ class SettingController extends GetxController {
   final box = GetStorage();
 
   readvisiblevalues() {
+    slide.value = box.read('slide') ?? 3.0;
     fivehundredvisible.value = box.read('fivehundredvisible') ?? false;
     twothousandvisible.value = box.read('twothousandvisible') ?? false;
     twohundredvisible.value = box.read('twohundredvisible') ?? false;
@@ -28,6 +31,11 @@ class SettingController extends GetxController {
     fivevisible.value = box.read('fivevisible') ?? false;
     twovisible.value = box.read('twovisible') ?? false;
     onevisible.value = box.read('onevisible') ?? false;
+  }
+
+  //input field storing function
+  slidewrite() async {
+    await box.write('slide', slide.value);
   }
 
   // 2000 value storing function
