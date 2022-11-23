@@ -26,6 +26,7 @@ class HomeController extends GetxController {
   final twocontroller = TextEditingController().obs;
   final onecontroller = TextEditingController().obs;
   final payeecontroller = TextEditingController().obs;
+  final addcashcontroller = TextEditingController().obs;
   //visible variables
 
   //input value geting variabls
@@ -38,7 +39,8 @@ class HomeController extends GetxController {
       g = 0.obs,
       h = 0.obs,
       i = 0.obs,
-      j = 0.obs;
+      j = 0.obs,
+      k = 0.obs;
   final RxInt coins = 0.obs;
   //no of notes value storing variables
   final RxInt noofnotes = 0.obs,
@@ -64,7 +66,8 @@ class HomeController extends GetxController {
       ten = 0.obs,
       five = 0.obs,
       two = 0.obs,
-      one = 0.obs;
+      one = 0.obs,
+      add = 0.obs;
   //controller to model update function
   controllertomodel() async {
     modelvalues.value.date = date.value;
@@ -121,7 +124,8 @@ class HomeController extends GetxController {
         ten.value +
         five.value +
         two.value +
-        one.value;
+        one.value +
+        add.value;
     wordsamt.value = total.value;
     //
   }
@@ -266,11 +270,22 @@ class HomeController extends GetxController {
       notessum();
       totalsum();
     });
+    addcashcontroller.value.addListener(() {
+      if (addcashcontroller.value.text == '') {
+        k.value = 0;
+      } else {
+        k.value = int.parse(addcashcontroller.value.text);
+      }
+      add.value = k.value;
+      totalsum();
+      debugPrint(add.value.toString());
+    });
   }
 
   @override
   void onClose() {
     super.onClose();
+    addcashcontroller.value.dispose();
     payeecontroller.value.dispose();
     twothousandcontroller.value.dispose();
     fivehundredcontroller.value.dispose();

@@ -70,7 +70,7 @@ class History extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   int rindex = historyontroller.data.length - 1 - index;
                   return SizedBox(
-                    height: 280,
+                    height: 260,
                     width: double.infinity,
                     child: Card(
                       color: Colors.white30,
@@ -189,18 +189,18 @@ class History extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    // Text(
-                                    //   NumberToWord()
-                                    //       .convert(
-                                    //           'en-in',
-                                    //           int.parse(historyontroller
-                                    //               .data[rindex].totamt
-                                    //               .toString()))
-                                    //       .toUpperCase(),
-                                    //   style: TextStyle(
-                                    //       fontSize: 16,
-                                    //       fontWeight: FontWeight.bold),
-                                    // ),
+                                    Text(
+                                      NumberToWord()
+                                          .convert(
+                                              'en-in',
+                                              int.parse(historyontroller
+                                                  .data[rindex].totamt
+                                                  .toString()))
+                                          .toUpperCase(),
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ],
                                 ),
                               ),

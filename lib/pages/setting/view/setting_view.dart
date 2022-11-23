@@ -309,6 +309,32 @@ class _SettingviewState extends State<Settingview> {
                   ),
                 ),
               ),
+              Card(
+                child: Container(
+                  height: 50,
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 50),
+                        child: Text(
+                          "₹add_cash",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                      Switch.adaptive(
+                          value: settingcontroller.morecashvisible.value,
+                          onChanged: (value) {
+                            setState(() {
+                              settingcontroller.morecashvisible.value = value;
+                              settingcontroller.addfun();
+                            });
+                          })
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

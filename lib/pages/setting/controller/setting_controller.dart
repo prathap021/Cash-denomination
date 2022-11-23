@@ -4,7 +4,9 @@ import 'package:get_storage/get_storage.dart';
 
 class SettingController extends GetxController {
   //slider value
+
   final RxDouble slide = 3.0.obs;
+  final RxBool morecashvisible = false.obs;
   final RxBool twothousandvisible = false.obs;
   final RxBool fivehundredvisible = false.obs;
   final RxBool twohundredvisible = false.obs;
@@ -15,12 +17,17 @@ class SettingController extends GetxController {
   final RxBool fivevisible = false.obs;
   final RxBool twovisible = false.obs;
   final RxBool onevisible = false.obs;
+  //color varible values
+  final RxBool lightbulb = false.obs;
   //storing visible variable values
 
   final box = GetStorage();
 
   readvisiblevalues() {
+    lightbulb.value = box.read('lightbulb') ?? false;
+
     slide.value = box.read('slide') ?? 3.0;
+    morecashvisible.value = box.read('morecashvisible') ?? false;
     fivehundredvisible.value = box.read('fivehundredvisible') ?? false;
     twothousandvisible.value = box.read('twothousandvisible') ?? false;
     twohundredvisible.value = box.read('twohundredvisible') ?? false;
@@ -36,6 +43,16 @@ class SettingController extends GetxController {
   //input field storing function
   slidewrite() async {
     await box.write('slide', slide.value);
+  }
+
+  //light bulb fun
+  light() async {
+    await box.write('lightbulb', lightbulb.value);
+  }
+
+  //add cash function
+  addfun() async {
+    await box.write('morecashvisible', morecashvisible.value);
   }
 
   // 2000 value storing function

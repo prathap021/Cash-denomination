@@ -8,7 +8,6 @@ import 'package:getcash/routes/app_routes.dart';
 import 'package:getcash/themes/themes.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   runApp(MyApp());
 }
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- 
     return GetMaterialApp(
       initialRoute: AppRoutes.home,
       getPages: AppPages.Pages,

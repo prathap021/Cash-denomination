@@ -43,7 +43,7 @@ class DBProvider {
           'five TEXT,'
           'two TEXT,'
           'one TEXT,'
-          'totamt TEXT,'
+          'totamt INTEGER,'
           'totnotes TEXT,'
           'totcoins TEXT'
           ')');

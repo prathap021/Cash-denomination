@@ -22,7 +22,6 @@ class _HomeState extends State<Home> {
   final homecontroller = Get.put(HomeController());
 
   final settingcontroller = Get.put(SettingController());
-  bool colorone = false;
 
   @override
   Widget build(BuildContext context) {
@@ -117,14 +116,17 @@ class _HomeState extends State<Home> {
                               return Column(
                                 children: [
                                   IconButton(
-                                      color: colorone
+                                      color: settingcontroller.lightbulb.value
                                           ? Colors.yellow
                                           : Colors.black,
                                       icon: Icon(Icons.light_outlined),
                                       onPressed: () {
                                         setState(() {
-                                          colorone = !colorone;
+                                          settingcontroller.lightbulb.value =
+                                              !settingcontroller
+                                                  .lightbulb.value;
                                         });
+                                        settingcontroller.light();
                                         ThemeService().changeThemeMode();
                                       }),
                                   IconButton(
@@ -947,6 +949,84 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                               controller: homecontroller.onecontroller.value,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(
+                                    settingcontroller.slide.value.toInt()),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'[0-9]'))
+                              ],
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "=",
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "₹" + homecontroller.one.value.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: !settingcontroller.morecashvisible.value,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Container(
+                    height: 60,
+                    child: Card(
+                      child: Row(
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.lightGreen,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              height: 45,
+                              width: 85,
+                              child: Center(
+                                  child: Text(
+                                "₹\t+",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 30),
+                              )),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(
+                              "X",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 45,
+                            width: 85,
+                            child: TextField(
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              controller:
+                                  homecontroller.addcashcontroller.value,
                               keyboardType: TextInputType.number,
                               inputFormatters: <TextInputFormatter>[
                                 LengthLimitingTextInputFormatter(
