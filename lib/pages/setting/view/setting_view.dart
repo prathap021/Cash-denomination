@@ -19,7 +19,11 @@ class _SettingviewState extends State<Settingview> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Setting"),
+        backgroundColor: Colors.indigoAccent,
+        title: Text(
+          "Setting",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: SingleChildScrollView(
         child: Obx(
@@ -318,7 +322,17 @@ class _SettingviewState extends State<Settingview> {
                       Padding(
                         padding: const EdgeInsets.only(left: 50),
                         child: Text(
-                          "₹add_cash",
+                          "add cash",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 50),
+                        child: Text(
+                          settingcontroller.morecashvisible.value
+                              ? 'show'
+                              : "hide",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),

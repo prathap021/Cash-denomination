@@ -19,6 +19,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final formKey = GlobalKey<FormState>();
   final homecontroller = Get.put(HomeController());
 
   final settingcontroller = Get.put(SettingController());
@@ -44,57 +45,95 @@ class _HomeState extends State<Home> {
                       color: Colors.teal,
                       icon: Icon(Icons.save),
                       onPressed: () {
-                        homecontroller.datetimefunction();
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return StatefulBuilder(builder:
-                                  (BuildContext context, StateSetter setState) {
-                                return AlertDialog(
-                                  title: Text("Payee Name"),
-                                  content: SizedBox(
-                                    height: 40,
-                                    child: TextField(
+                        if (0 < homecontroller.twothousand.value ||
+                            0 < homecontroller.fivehundred.value ||
+                            0 < homecontroller.twohundred.value ||
+                            0 < homecontroller.hundred.value ||
+                            0 < homecontroller.fifty.value ||
+                            0 < homecontroller.twenty.value ||
+                            0 < homecontroller.ten.value ||
+                            0 < homecontroller.five.value ||
+                            0 < homecontroller.two.value ||
+                            0 < homecontroller.one.value) {
+                          homecontroller.datetimefunction();
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return StatefulBuilder(builder:
+                                    (BuildContext context,
+                                        StateSetter setState) {
+                                  return Form(
+                                    key: formKey,
+                                    child: AlertDialog(
+                                      title: Text("Payee Name"),
+                                      content: TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Please Enter name';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
                                         controller: homecontroller
                                             .payeecontroller.value,
-                                        decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10)))),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  actions: [
-                                    IconButton(
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                        icon: Text(
-                                          "✗",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.redAccent),
-                                        )),
-                                    IconButton(
-                                        onPressed: () {
-                                          homecontroller.controllertomodel();
-                                          homecontroller.clearcontroller();
-                                          Get.back();
-                                        },
-                                        icon: Text(
-                                          "✔",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.lightGreen),
-                                        ))
-                                  ],
-                                );
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(25),
+                                      ),
+                                      actions: [
+                                        IconButton(
+                                            onPressed: () {
+                                              Get.back();
+                                            },
+                                            icon: Text(
+                                              "✗",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.redAccent),
+                                            )),
+                                        IconButton(
+                                            onPressed: () {
+                                              if (formKey.currentState!
+                                                  .validate()) {
+                                                homecontroller
+                                                    .controllertomodel();
+                                                homecontroller
+                                                    .clearcontroller();
+
+                                                Get.back();
+                                                FocusScope.of(context)
+                                                    .unfocus();
+
+                                                Get.snackbar(
+                                                    "TOTAL AMOUNT", "Saved ",
+                                                    icon: Icon(
+                                                      Icons.done,
+                                                      size: 10,
+                                                      color: Colors.white,
+                                                    ),
+                                                    colorText: Colors.white,
+                                                    snackPosition:
+                                                        SnackPosition.BOTTOM);
+                                              }
+                                            },
+                                            icon: Text(
+                                              "✔",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.lightGreen),
+                                            ))
+                                      ],
+                                    ),
+                                  );
+                                });
                               });
-                            });
+                        } else {
+                          Get.snackbar(
+                              "Amounts is Empty!", "Please Enter Some Amounts",
+                              snackPosition: SnackPosition.BOTTOM);
+                        }
                       }),
                   IconButton(
                       color: Colors.redAccent,
@@ -128,9 +167,11 @@ class _HomeState extends State<Home> {
                                         });
                                         settingcontroller.light();
                                         ThemeService().changeThemeMode();
+                                        Get.back();
                                       }),
                                   IconButton(
                                       onPressed: () {
+                                        Get.back();
                                         Get.to(() => Settingview());
                                       },
                                       icon: Icon(Icons.settings))
@@ -197,8 +238,10 @@ class _HomeState extends State<Home> {
                         Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                              NumberToWord().convert(
-                                  'en-in', homecontroller.wordsamt.value),
+                              NumberToWord()
+                                  .convert(
+                                      'en-in', homecontroller.wordsamt.value)
+                                  .toUpperCase(),
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ))
                       ],
@@ -843,7 +886,7 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.grey[400],
+                                  color: Colors.black38,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                               height: 45,
@@ -997,7 +1040,7 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.lightGreen,
+                                  color: Colors.black87,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                               height: 45,
@@ -1006,7 +1049,7 @@ class _HomeState extends State<Home> {
                                   child: Text(
                                 "₹\t+",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 30),
+                                    color: Colors.white, fontSize: 25),
                               )),
                             ),
                           ),
@@ -1049,7 +1092,7 @@ class _HomeState extends State<Home> {
                           ),
                           Expanded(
                             child: Text(
-                              "₹" + homecontroller.one.value.toString(),
+                              "₹" + homecontroller.add.value.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),

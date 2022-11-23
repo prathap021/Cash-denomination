@@ -15,7 +15,7 @@ class History extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: Colors.indigoAccent,
               title: Text("history"),
               centerTitle: true,
               actions: [
@@ -49,7 +49,11 @@ class History extends StatelessWidget {
                                   IconButton(
                                       onPressed: () {
                                         historyontroller.deletetable();
+
                                         Get.back();
+                                        Get.snackbar("HISTORY", "CLEAR",
+                                            snackPosition:
+                                                SnackPosition.BOTTOM);
                                       },
                                       icon: Text(
                                         "✔",
